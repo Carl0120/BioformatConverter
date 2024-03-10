@@ -1,0 +1,32 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.0'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.proyects'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+
+repositories {
+	mavenCentral()
+	maven {
+            url 'https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/'
+        }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.1'
+	implementation group: 'org.biojava', name: 'biojava-genome', version: '7.1.1'
+
+
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
