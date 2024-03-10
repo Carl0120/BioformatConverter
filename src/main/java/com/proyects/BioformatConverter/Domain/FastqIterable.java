@@ -8,7 +8,7 @@ import java.util.List;
 
 public class FastqIterable implements Iterable<Fastq>{
 
-    private List<Fastq> fastqList;
+    private final List<Fastq> fastqList;
     public FastqIterable() {
         fastqList = new ArrayList<>();
     }

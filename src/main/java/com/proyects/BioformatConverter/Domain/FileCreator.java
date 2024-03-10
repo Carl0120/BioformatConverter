@@ -24,7 +24,7 @@ public class FileCreator {
         }
     }
 
-    public static File createOutputFile(String name, Path outputPath) throws IOException {
+    public static File createOutputFile(String name, Path outputPath) {
 
         int index = name.lastIndexOf(".");
         name = name.substring(0,index).concat(Extension.FASTQShort.get());
