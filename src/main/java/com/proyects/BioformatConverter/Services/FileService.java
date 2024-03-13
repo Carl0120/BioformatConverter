@@ -29,7 +29,7 @@ public class FileService implements IFileService {
 
         FastaToFastqConverter.convertFile(inputFile,outputFile);
 
-            return inputFile.getName()+"     "+outputFile.getName();
+            return outputFile.getName();
     }
 
     @Override

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargar archivo</title>
+    <div th:replace="components/links.html"></div>
+</head>
+<body>
+<!-- Navbar Start -->
+<div th:replace="components/navbar.html"></div>
+<!-- Navbar End -->
+
+<!-- tarjetas -->
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Tu documento <span th:text="${from}"></span> han sido convertidos a <span th:text="${to}"></span></h3>
+    <div class="text-center">
+        <a th:href="'/api/download/' + ${fileName}" class="btn rounded btn-primary btn-lg me-3">Descargar archivo</a>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div  class="card-header col">
+            <h5 class="card-title mb-0">Continuar con...</h5>
+        </div>
+    </div>
+    <div class="row">
+
+            <div class="col-md-6 col-lg-4">
+                <a href="/fasta-to-fastq" class="text-decoration-none">
+                    <li class="list-group-item">
+                    FASTA a FASTQ
+                        <i class="ico ico--compress me-2"></i>
+                    </li>
+                </a>
+
+        </div>
+            <div class="col-md-6 col-lg-4">
+                <a href="/fasta-to-fastq"class="text-decoration-none">
+                    <li class="list-group-item">
+                        FASTA a FHYLIP
+                        <i class="ico ico--compress me-2"></i>
+                    </li>
+                </a>
+
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <a href="/fasta-to-fastq"class="text-decoration-none">
+                    <li class="list-group-item">
+                        FASTA a GENBANK
+                        <i class="ico ico--compress me-2"></i>
+                    </li>
+                </a>
+
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <a href="/fasta-to-fastq"class="text-decoration-none">
+                    <li class="list-group-item">
+                        FASTQ a FASTA
+                        <i class="ico ico--compress me-2"></i>
+                    </li>
+                </a>
+
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <a href="/fasta-to-fastq"class="text-decoration-none">
+                    <li class="list-group-item">
+                        FASTQ a PHYLIP
+                        <i class="ico ico--compress me-2"></i>
+                    </li>
+                </a>
+
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <a href="/fasta-to-fastq"class="text-decoration-none">
+                    <li class="list-group-item">
+                        FASTQ a GENBANK
+                        <i class="ico ico--compress me-2"></i>
+                    </li>
+                </a>
+
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <a href="/fasta-to-fastq"class="text-decoration-none">
+                    <li class="list-group-item">
+                         GENBANK a FASTA
+                        <i class="ico ico--compress me-2"></i>
+                    </li>
+                </a>
+
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <a href="/fasta-to-fastq"class="text-decoration-none">
+                    <li class="list-group-item">
+                        GENBANK a FASTQ
+                        <i class="ico ico--compress me-2"></i>
+                    </li>
+                </a>
+
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <a href="/fasta-to-fastq"class="text-decoration-none">
+                    <li class="list-group-item">
+                        GENBANK a PHYLIP
+                        <i class="ico ico--compress me-2"></i>
+                    </li>
+                </a>
+
+            </div>
+        </div>
+</div>
+
+
+</body>
+</html>

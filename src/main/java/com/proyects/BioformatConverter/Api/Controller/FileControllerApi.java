@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 
 @RestController
-@RequestMapping("file")
+@RequestMapping("api")
 public class FileControllerApi {
     @Autowired
     IFileService fileService;
