@@ -1,19 +1,13 @@
 package com.proyects.BioformatConverter.Domain;
 
 import org.biojava.nbio.core.sequence.DNASequence;
-import org.biojava.nbio.core.sequence.io.FastaReaderHelper;
 import org.biojava.nbio.genome.io.fastq.*;
-
-
-import java.io.File;
 import java.util.*;
 
 public class FastaToFastqConverter {
 
-    public static void convertFile(File inputFastaFile, File outputFastqFile) {
+    public static FastqIterable convertToFastq(LinkedHashMap<String, DNASequence> sequences) {
         try {
-
-            LinkedHashMap<String, DNASequence> sequences = FastaReaderHelper.readFastaDNASequence(inputFastaFile);
             FastqIterable fastqIterable = new FastqIterable();
 
             for(Map.Entry<String, DNASequence> entry : sequences.entrySet()){
@@ -22,13 +16,10 @@ public class FastaToFastqConverter {
                 Fastq fastq = convertSequenceeToFastq(entry.getKey(), entry.getValue(),qualityValues);
                 fastqIterable.add(fastq);
             }
-            FastqWriter fastqWriter = new SangerFastqWriter();
-            fastqWriter.write(outputFastqFile,fastqIterable);
-
+            return fastqIterable;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
     public static String generateQualityValues(int length) {
         StringBuilder qualityValues = new StringBuilder();

@@ -1,42 +1,44 @@
 package com.proyects.BioformatConverter.Services;
 
 import com.proyects.BioformatConverter.Domain.FastaToFastqConverter;
-import com.proyects.BioformatConverter.Domain.FileCreator;
+import com.proyects.BioformatConverter.Domain.FastqIterable;
+import com.proyects.BioformatConverter.Repository.FastqRepository;
+import org.biojava.nbio.core.sequence.DNASequence;
+import org.biojava.nbio.core.sequence.io.FastaReaderHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.LinkedHashMap;
 import java.util.Objects;
+
 
 @Service
 public class FileService implements IFileService {
-
-    private final Path inputPath = Paths.get("files/input");
+    @Autowired
+    FastqRepository fastqRepository;
     private final Path outputPath = Paths.get("files/output");
-
     @Override
-    public String convert(MultipartFile multipartFile) throws IOException {
+    public String convert(MultipartFile multipartFile) throws Exception {
 
-        File inputFile = FileCreator.createInputFile(Objects.requireNonNull(multipartFile.getOriginalFilename()), this.inputPath);
-        multipartFile.transferTo(inputFile);
-        File outputFile = FileCreator.createOutputFile(multipartFile.getOriginalFilename(),this.outputPath);
+         LinkedHashMap<String, DNASequence > sequences = FastaReaderHelper.readFastaDNASequence(multipartFile.getInputStream());
 
-        FastaToFastqConverter.convertFile(inputFile,outputFile);
+        FastqIterable fastqIterable = FastaToFastqConverter.convertToFastq(sequences);
 
-            return outputFile.getName();
+        Path outputFilePath = outputPath.resolve(fastqRepository.createExtension(Objects.requireNonNull(multipartFile.getOriginalFilename())));
+        File outputFile = fastqRepository.copy(fastqIterable,outputFilePath);
+
+         return outputFile.getName();
     }
-
     @Override
     public Resource load(String fileName) throws MalformedURLException {
-        Path filePath = outputPath.resolve(fileName);
-        return new UrlResource(filePath.toUri());
-    }
 
+        return this.fastqRepository.read(outputPath.resolve(fileName));
+    }
 
 }

@@ -1,6 +1,6 @@
 package com.proyects.BioformatConverter.Api.Controller;
 
-import com.proyects.BioformatConverter.Services.IFileService;
+import com.proyects.BioformatConverter.Services.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -8,17 +8,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 
 @RestController
 @RequestMapping("api")
 public class FileControllerApi {
     @Autowired
-    IFileService fileService;
+    FileService fileService;
 
     @PostMapping("/upload")
-    public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file) throws IOException {
+    public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file) throws Exception {
 
         String fileName = this.fileService.convert(file);
         return ResponseEntity.ok(fileName);
