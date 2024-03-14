@@ -5,7 +5,6 @@ import com.proyects.BioformatConverter.Repository.FastaRepository;
 import org.biojava.nbio.core.sequence.DNASequence;
 import org.biojava.nbio.genome.io.fastq.Fastq;
 import org.biojava.nbio.genome.io.fastq.FastqReader;
-import org.biojava.nbio.genome.io.fastq.IlluminaFastqReader;
 import org.biojava.nbio.genome.io.fastq.SangerFastqReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -17,7 +16,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class ServiceFastqToFasta implements IFileService {
@@ -37,7 +36,7 @@ public class ServiceFastqToFasta implements IFileService {
 
         System.out.println();
 
-        Path filePath =  outputPath.resolve(fastaRepository.createExtension(file.getOriginalFilename()));
+        Path filePath =  outputPath.resolve(fastaRepository.createExtension(Objects.requireNonNull(file.getOriginalFilename())));
         File outputFile = fastaRepository.copy(linkedHashMap, filePath);
 
       return outputFile.getName();
