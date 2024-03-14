@@ -1,7 +1,7 @@
-package com.proyects.BioformatConverter.Api.Controller;
+package com.proyects.BioformatConverter.Controller;
 
 import com.proyects.BioformatConverter.Configurations.Routes;
-import com.proyects.BioformatConverter.Services.FileService;
+import com.proyects.BioformatConverter.Services.ServiceFastaToFastq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -9,20 +9,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @RestController
-@RequestMapping("")
-public class ViewController {
+@RequestMapping("/fasta-to-fastq")
+public class ControllerFastaToFastq implements IBaseController{
     @Autowired
-    FileService fileService;
+    ServiceFastaToFastq fileService;
+
     @GetMapping
-    public ModelAndView index(){
-        return new ModelAndView(Routes.HOME);
-    }
-    @GetMapping
-    @RequestMapping("/fasta-to-fastq")
-    public ModelAndView ToFastq(){
+    public ModelAndView convert(){
         ModelAndView view = new ModelAndView(Routes.CONVERT);
         view.addObject("from", "FASTA");
         view.addObject("to", "FASTQ");
+        view.addObject("route","/fasta-to-fastq");
         return view;
     }
     @PostMapping("/upload")

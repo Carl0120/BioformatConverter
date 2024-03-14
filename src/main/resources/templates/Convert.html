@@ -20,8 +20,8 @@
         <hr>
         <div class="text-center">
             <h4>Selecciona el documento <span th:text="${from}"></span></h4>
-            <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" class="form-control-file mb-3" id="file" name="file" accept=".fasta, .fa, .fna, .ffn, .faa, .frn">
+            <form th:action="${route} + '/upload'" method="post" enctype="multipart/form-data">
+            <input type="file" class="form-control-file mb-3" id="file" name="file">
             <button type="submit" class="btn rounded btn-lg btn-primary">Convertir a <span th:text="${to}"></span></button>
             </form>
         </div>

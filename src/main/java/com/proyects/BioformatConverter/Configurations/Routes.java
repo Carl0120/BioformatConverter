@@ -5,7 +5,7 @@ public class Routes {
     public static String HOME = "index.html";
 
     //Formatos
-    public static String CONVERT = "ConvertirToFASTQ.html";
+    public static String CONVERT = "Convert.html";
     public static String DOWNLOAD = "download.html";
 
 }

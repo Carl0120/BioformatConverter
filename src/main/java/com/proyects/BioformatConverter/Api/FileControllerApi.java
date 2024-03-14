@@ -1,6 +1,6 @@
-package com.proyects.BioformatConverter.Api.Controller;
+package com.proyects.BioformatConverter.Api;
 
-import com.proyects.BioformatConverter.Services.FileService;
+import com.proyects.BioformatConverter.Services.ServiceFastaToFastq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 @RequestMapping("api")
 public class FileControllerApi {
     @Autowired
-    FileService fileService;
+    ServiceFastaToFastq fileService;
 
     @PostMapping("/upload")
     public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file) throws Exception {

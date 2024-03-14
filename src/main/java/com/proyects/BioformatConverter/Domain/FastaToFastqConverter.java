@@ -26,7 +26,8 @@ public class FastaToFastqConverter {
         Random random = new Random();
 
         for (int i = 0; i < length; i++) {
-            qualityValues.append(random.nextInt(9) + 1);
+            int b =  (random.nextInt(94) + 33);
+            qualityValues.append((char) b);
         }
         return qualityValues.toString();
     }

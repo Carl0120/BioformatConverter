@@ -19,7 +19,8 @@ import java.util.Objects;
 
 
 @Service
-public class FileService implements IFileService {
+public class ServiceFastaToFastq implements IFileService {
+
     @Autowired
     FastqRepository fastqRepository;
     private final Path outputPath = Paths.get("files/output");
@@ -37,7 +38,6 @@ public class FileService implements IFileService {
     }
     @Override
     public Resource load(String fileName) throws MalformedURLException {
-
         return this.fastqRepository.read(outputPath.resolve(fileName));
     }
 
