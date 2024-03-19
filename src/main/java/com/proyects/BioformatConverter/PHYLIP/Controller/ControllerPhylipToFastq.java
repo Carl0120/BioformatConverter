@@ -4,7 +4,6 @@ import com.proyects.BioformatConverter.Configurations.ModelFactory;
 import com.proyects.BioformatConverter.IBaseController;
 import com.proyects.BioformatConverter.PHYLIP.Service.ServicePhylipToFastq;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

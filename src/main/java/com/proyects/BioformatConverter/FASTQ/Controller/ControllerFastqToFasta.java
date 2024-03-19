@@ -1,7 +1,6 @@
 package com.proyects.BioformatConverter.FASTQ.Controller;
 
 import com.proyects.BioformatConverter.Configurations.ModelFactory;
-import com.proyects.BioformatConverter.Configurations.Routes;
 import com.proyects.BioformatConverter.IBaseController;
 import com.proyects.BioformatConverter.FASTQ.Service.ServiceFastqToFasta;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,5 @@
 package com.proyects.BioformatConverter.Entity;
 
-import org.biojava.nbio.core.sequence.DNASequence;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +7,7 @@ import java.util.List;
 public class PhylipIterable {
     private int numberOfSequence = 0;
     private int lengthOfSequence = 0;
-    private List<PhylipSequence> sequences;
+    private final List<PhylipSequence> sequences;
 
     public PhylipIterable(int lengthOfSequence, int numberOfSequence, List<PhylipSequence> sequences) throws IOException {
         this.sequences = new ArrayList<>();
@@ -36,14 +34,6 @@ public class PhylipIterable {
 
     public int getNumberOfSequence() {
         return numberOfSequence;
-    }
-
-    private void setNumberOfSequence(int numberOfSequence) throws IOException {
-        if (lengthOfSequence > 0) {
-            this.numberOfSequence = numberOfSequence;
-        } else {
-            throw new IOException("El numero de secuencias es invalido");
-        }
     }
 
     public  List<PhylipSequence> getSequences() {

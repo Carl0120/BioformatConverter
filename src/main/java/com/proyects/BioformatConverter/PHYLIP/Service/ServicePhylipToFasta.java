@@ -5,7 +5,6 @@ import com.proyects.BioformatConverter.IFileService;
 import com.proyects.BioformatConverter.PHYLIP.Converter.PhylipReader;
 import com.proyects.BioformatConverter.PHYLIP.Converter.PhylipToFastaConverter;
 import com.proyects.BioformatConverter.Repository.FastaRepository;
-import com.proyects.BioformatConverter.Repository.PhylipRepository;
 import org.biojava.nbio.core.sequence.DNASequence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;

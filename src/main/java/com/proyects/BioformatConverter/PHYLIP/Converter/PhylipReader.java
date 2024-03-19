@@ -4,14 +4,12 @@ import com.proyects.BioformatConverter.Entity.PhylipIterable;
 import com.proyects.BioformatConverter.Entity.PhylipSequence;
 import org.biojava.nbio.core.exceptions.CompoundNotFoundException;
 import org.biojava.nbio.core.sequence.DNASequence;
-import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class PhylipReader {

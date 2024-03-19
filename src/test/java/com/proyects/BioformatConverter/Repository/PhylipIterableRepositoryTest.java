@@ -5,7 +5,6 @@ import com.proyects.BioformatConverter.Entity.PhylipSequence;
 import org.biojava.nbio.core.sequence.DNASequence;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ class PhylipIterableRepositoryTest {
         PhylipRepository repository = new PhylipRepository();
         Path outputPath = Paths.get("files/output");
 
-       File file =  repository.copy(phylipIterable, outputPath.resolve("prueba.pfy"));
+       repository.copy(phylipIterable, outputPath.resolve("prueba.pfy"));
     }
 
     @Test
