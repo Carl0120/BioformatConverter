@@ -1,4 +1,4 @@
-package com.proyects.BioformatConverter.Controller;
+package com.proyects.BioformatConverter.Configurations;
 
 import com.proyects.BioformatConverter.Configurations.Routes;
 import org.springframework.web.bind.annotation.GetMapping;

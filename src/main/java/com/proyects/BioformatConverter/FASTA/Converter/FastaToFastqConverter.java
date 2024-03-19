@@ -1,5 +1,6 @@
-package com.proyects.BioformatConverter.Domain;
+package com.proyects.BioformatConverter.FASTA.Converter;
 
+import com.proyects.BioformatConverter.Entity.FastqIterable;
 import org.biojava.nbio.core.sequence.DNASequence;
 import org.biojava.nbio.genome.io.fastq.*;
 import java.util.*;
@@ -21,7 +22,7 @@ public class FastaToFastqConverter {
             throw new RuntimeException(e);
         }
     }
-    public static String generateQualityValues(int length) {
+    private static String generateQualityValues(int length) {
         StringBuilder qualityValues = new StringBuilder();
         Random random = new Random();
 
@@ -31,7 +32,7 @@ public class FastaToFastqConverter {
         }
         return qualityValues.toString();
     }
-    public static Fastq convertSequenceeToFastq(String description, DNASequence dnaSequence, String qualityValues) {
+    private static Fastq convertSequenceeToFastq(String description, DNASequence dnaSequence, String qualityValues) {
 
         String sequenceString = dnaSequence.getSequenceAsString();
         FastqBuilder builder = new FastqBuilder();

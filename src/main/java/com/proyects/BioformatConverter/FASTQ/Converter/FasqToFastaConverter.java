@@ -1,4 +1,4 @@
-package com.proyects.BioformatConverter.Domain;
+package com.proyects.BioformatConverter.FASTQ.Converter;
 
 import org.biojava.nbio.core.sequence.DNASequence;
 import org.biojava.nbio.genome.io.fastq.Fastq;
@@ -12,7 +12,6 @@ public class FasqToFastaConverter {
             LinkedHashMap<String,DNASequence> fastaMap = new LinkedHashMap<>();
             for(Fastq fastq : fastqs) {
                 fastaMap.put(fastq.getDescription(), new DNASequence(fastq.getSequence()));
-                System.out.println("Segunda descripcion" + fastq.getDescription());
             }
             return fastaMap;
         } catch (Exception e) {

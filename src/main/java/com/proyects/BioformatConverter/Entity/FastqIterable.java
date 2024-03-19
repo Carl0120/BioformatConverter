@@ -1,4 +1,4 @@
-package com.proyects.BioformatConverter.Domain;
+package com.proyects.BioformatConverter.Entity;
 
 import org.biojava.nbio.genome.io.fastq.Fastq;
 

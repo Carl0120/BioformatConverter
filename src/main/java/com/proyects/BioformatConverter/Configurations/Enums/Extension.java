@@ -4,7 +4,8 @@ public enum Extension {
     FASTALong(".fasta"),
     FASTAShort(".fa"),
     FASTQLong(".fastq"),
-    FASTQShort(".fq");
+    FASTQShort(".fq"),
+    PHYLIPShort(".phy");
 
 
     private final String extension;

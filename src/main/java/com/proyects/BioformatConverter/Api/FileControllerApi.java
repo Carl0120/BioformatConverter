@@ -1,6 +1,6 @@
 package com.proyects.BioformatConverter.Api;
 
-import com.proyects.BioformatConverter.Services.ServiceFastaToFastq;
+import com.proyects.BioformatConverter.FASTA.Service.ServiceFastaToFastq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;

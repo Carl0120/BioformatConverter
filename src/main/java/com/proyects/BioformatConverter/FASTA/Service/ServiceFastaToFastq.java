@@ -1,8 +1,9 @@
-package com.proyects.BioformatConverter.Services;
+package com.proyects.BioformatConverter.FASTA.Service;
 
-import com.proyects.BioformatConverter.Domain.FastaToFastqConverter;
-import com.proyects.BioformatConverter.Domain.FastqIterable;
+import com.proyects.BioformatConverter.FASTA.Converter.FastaToFastqConverter;
+import com.proyects.BioformatConverter.Entity.FastqIterable;
 import com.proyects.BioformatConverter.Repository.FastqRepository;
+import com.proyects.BioformatConverter.IFileService;
 import org.biojava.nbio.core.sequence.DNASequence;
 import org.biojava.nbio.core.sequence.io.FastaReaderHelper;
 import org.springframework.beans.factory.annotation.Autowired;

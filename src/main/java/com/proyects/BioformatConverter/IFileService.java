@@ -1,4 +1,4 @@
-package com.proyects.BioformatConverter.Services;
+package com.proyects.BioformatConverter;
 
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;

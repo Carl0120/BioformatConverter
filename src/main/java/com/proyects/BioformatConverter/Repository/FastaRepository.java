@@ -22,7 +22,7 @@ public class FastaRepository implements BaseRepository<LinkedHashMap<String, DNA
             for (String header : object.keySet()){
                 writer.write(">"+ header+"\n");
                 String sequence = object.get(header).getSequenceAsString();
-                int maxLength = 120;
+                int maxLength = 80;
                 int lenght = sequence.length();
                 int startIndex = 0;
                 while (startIndex < lenght){
