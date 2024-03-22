@@ -1,6 +1,6 @@
 package com.proyects.BioformatConverter.FASTA.Service;
 
-import com.proyects.BioformatConverter.FASTA.Converter.FastaToFastqConverter;
+import com.proyects.BioformatConverter.FASTA.Converter.LinkedToFastqConverter;
 import com.proyects.BioformatConverter.Entity.FastqIterable;
 import com.proyects.BioformatConverter.Repository.FastqRepository;
 import com.proyects.BioformatConverter.IFileService;
@@ -30,7 +30,7 @@ public class ServiceFastaToFastq implements IFileService {
 
          LinkedHashMap<String, DNASequence > sequences = FastaReaderHelper.readFastaDNASequence(multipartFile.getInputStream());
 
-        FastqIterable fastqIterable = FastaToFastqConverter.convertToFastq(sequences);
+        FastqIterable fastqIterable = LinkedToFastqConverter.convertToFastq(sequences);
 
         Path outputFilePath = outputPath.resolve(fastqRepository.createExtension(Objects.requireNonNull(multipartFile.getOriginalFilename())));
         File outputFile = fastqRepository.copy(fastqIterable,outputFilePath);

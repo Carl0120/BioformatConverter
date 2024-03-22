@@ -1,8 +1,8 @@
 package com.proyects.BioformatConverter.FASTQ.Service;
 
 import com.proyects.BioformatConverter.Entity.PhylipIterable;
-import com.proyects.BioformatConverter.FASTA.Converter.FastaToPhylipConverter;
-import com.proyects.BioformatConverter.FASTQ.Converter.FasqToFastaConverter;
+import com.proyects.BioformatConverter.FASTA.Converter.LinkedToPhylipConverter;
+import com.proyects.BioformatConverter.FASTQ.Converter.FasqToLinkedConverter;
 import com.proyects.BioformatConverter.IFileService;
 import com.proyects.BioformatConverter.Repository.PhylipRepository;
 import org.biojava.nbio.core.sequence.DNASequence;
@@ -31,8 +31,8 @@ public class ServiceFastqToPhylip implements IFileService {
         FastqReader fastqReader = new SangerFastqReader();
         Iterable<Fastq> fastqIterable = fastqReader.read(file.getInputStream());
 
-        LinkedHashMap<String, DNASequence> linkedHashMap =  FasqToFastaConverter.convert(fastqIterable);
-        PhylipIterable phylipIterable = FastaToPhylipConverter.convert(linkedHashMap);
+        LinkedHashMap<String, DNASequence> linkedHashMap =  FasqToLinkedConverter.convert(fastqIterable);
+        PhylipIterable phylipIterable = LinkedToPhylipConverter.convert(linkedHashMap);
 
         Path outputFilePath = outputPath.resolve(phylipRepository.createExtension(Objects.requireNonNull(file.getOriginalFilename())));
         File outputFile = phylipRepository.copy(phylipIterable,outputFilePath);

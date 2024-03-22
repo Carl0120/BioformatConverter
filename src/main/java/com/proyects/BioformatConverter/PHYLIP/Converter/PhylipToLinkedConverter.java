@@ -6,7 +6,7 @@ import org.biojava.nbio.core.sequence.DNASequence;
 
 import java.util.LinkedHashMap;
 
-public class PhylipToFastaConverter {
+public class PhylipToLinkedConverter {
     public  static LinkedHashMap<String, DNASequence> convert(PhylipIterable phylipIterable) {
         LinkedHashMap<String, DNASequence> linkedHashMap = new LinkedHashMap<>();
         for (PhylipSequence sequence : phylipIterable.getSequences()){

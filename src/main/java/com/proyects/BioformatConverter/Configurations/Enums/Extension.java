@@ -5,6 +5,7 @@ public enum Extension {
     FASTAShort(".fa"),
     FASTQLong(".fastq"),
     FASTQShort(".fq"),
+    GENBANKShort(".gb"),
     PHYLIPShort(".phy");
 
 

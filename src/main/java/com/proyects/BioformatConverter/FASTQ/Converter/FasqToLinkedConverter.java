@@ -5,7 +5,7 @@ import org.biojava.nbio.genome.io.fastq.Fastq;
 import java.util.LinkedHashMap;
 
 
-public class FasqToFastaConverter {
+public class FasqToLinkedConverter {
 
     public  static LinkedHashMap<String,DNASequence> convert(Iterable<Fastq> fastqs) {
         try {

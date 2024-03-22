@@ -1,11 +1,11 @@
-package com.proyects.BioformatConverter.PHYLIP.Service;
+package com.proyects.BioformatConverter.GENBANK.Service;
 
 import com.proyects.BioformatConverter.Entity.FastqIterable;
-import com.proyects.BioformatConverter.Entity.PhylipIterable;
 import com.proyects.BioformatConverter.FASTA.Converter.LinkedToFastqConverter;
+import com.proyects.BioformatConverter.GENBANK.Converter.GenBankReader;
+import com.proyects.BioformatConverter.GENBANK.Converter.GenBankToFastaConverter;
+import com.proyects.BioformatConverter.GENBANK.GenBankEntry;
 import com.proyects.BioformatConverter.IFileService;
-import com.proyects.BioformatConverter.PHYLIP.Converter.PhylipReader;
-import com.proyects.BioformatConverter.PHYLIP.Converter.PhylipToLinkedConverter;
 import com.proyects.BioformatConverter.Repository.FastqRepository;
 import org.biojava.nbio.core.sequence.DNASequence;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,29 +18,31 @@ import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Objects;
 
 @Service
-public class ServicePhylipToFastq implements IFileService {
-
+public class ServiceGenBankToFastq implements IFileService {
     @Autowired
     FastqRepository fastqRepository;
-
     private final Path outputPath = Paths.get("files/output");
+
     @Override
     public String convert(MultipartFile file) throws Exception {
 
-        PhylipIterable phylipIterable = PhylipReader.read(file.getInputStream());
-        LinkedHashMap<String, DNASequence> linkedHashMap = PhylipToLinkedConverter.convert(phylipIterable);
-        FastqIterable fastqIterable =   LinkedToFastqConverter.convertToFastq(linkedHashMap);
+        List<GenBankEntry> genBankEntry = GenBankReader.read(file.getInputStream());
+        LinkedHashMap<String, DNASequence> fastaMap = GenBankToFastaConverter.convert(genBankEntry);
 
-        Path filePath =  outputPath.resolve(fastqRepository.createExtension(Objects.requireNonNull(file.getOriginalFilename())));
-        File outputFile = fastqRepository.copy(fastqIterable, filePath);
+        FastqIterable fastqIterable = LinkedToFastqConverter.convertToFastq(fastaMap);
+
+        Path outputFilePath = outputPath.resolve(fastqRepository.createExtension(Objects.requireNonNull(file.getOriginalFilename())));
+        File outputFile = fastqRepository.copy(fastqIterable,outputFilePath);
+
         return outputFile.getName();
     }
 
     @Override
     public Resource load(String fileName) throws MalformedURLException {
-        return fastqRepository.read(outputPath.resolve(fileName));
+        return this.fastqRepository.read(outputPath.resolve(fileName));
     }
 }

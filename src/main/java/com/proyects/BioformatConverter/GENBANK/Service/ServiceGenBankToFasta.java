@@ -1,9 +1,9 @@
-package com.proyects.BioformatConverter.PHYLIP.Service;
+package com.proyects.BioformatConverter.GENBANK.Service;
 
-import com.proyects.BioformatConverter.Entity.PhylipIterable;
+import com.proyects.BioformatConverter.GENBANK.Converter.GenBankReader;
+import com.proyects.BioformatConverter.GENBANK.Converter.GenBankToFastaConverter;
+import com.proyects.BioformatConverter.GENBANK.GenBankEntry;
 import com.proyects.BioformatConverter.IFileService;
-import com.proyects.BioformatConverter.PHYLIP.Converter.PhylipReader;
-import com.proyects.BioformatConverter.PHYLIP.Converter.PhylipToLinkedConverter;
 import com.proyects.BioformatConverter.Repository.FastaRepository;
 import org.biojava.nbio.core.sequence.DNASequence;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +16,24 @@ import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Objects;
 
 @Service
-public class ServicePhylipToFasta implements IFileService {
+public class ServiceGenBankToFasta implements IFileService {
     @Autowired
     FastaRepository fastaRepository;
+    private final Path inputPath = Paths.get("files/input");
     private final Path outputPath = Paths.get("files/output");
-
     @Override
     public String convert(MultipartFile file) throws Exception {
 
-        PhylipIterable phylipIterable = PhylipReader.read(file.getInputStream());
-        LinkedHashMap<String, DNASequence> linkedHashMap = PhylipToLinkedConverter.convert(phylipIterable);
+        List<GenBankEntry> genBankEntry = GenBankReader.read(file.getInputStream());
+        LinkedHashMap<String,DNASequence> fastaMap = GenBankToFastaConverter.convert(genBankEntry);
 
         Path filePath =  outputPath.resolve(fastaRepository.createExtension(Objects.requireNonNull(file.getOriginalFilename())));
-        File outputFile = fastaRepository.copy(linkedHashMap, filePath);
+        File outputFile = fastaRepository.copy(fastaMap, filePath);
+
         return outputFile.getName();
     }
 

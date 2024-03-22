@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-
 @RestController
 @RequestMapping("/fasta-to-fastq")
+
 public class ControllerFastaToFastq implements IBaseController {
     @Autowired
     ServiceFastaToFastq fileService;

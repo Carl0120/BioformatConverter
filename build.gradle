@@ -19,10 +19,16 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.1'
 	implementation group: 'org.biojava', name: 'biojava-genome', version: '7.1.1'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+   implementation group: 'org.biojava', name: 'biojava3-core', version: '3.0'
+
+
+
+
+
+
 
 
 }

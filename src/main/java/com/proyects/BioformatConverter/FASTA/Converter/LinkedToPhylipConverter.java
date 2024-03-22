@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class FastaToPhylipConverter {
+public class LinkedToPhylipConverter {
 
     public static PhylipIterable convert(LinkedHashMap<String, DNASequence> sequences) {
         try {
